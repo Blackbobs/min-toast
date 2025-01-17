@@ -1,4 +1,3 @@
-// src/context/ToastContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Toast } from '../components/Toast';
 
@@ -10,6 +9,7 @@ interface ToastData {
 
 interface ToastContextType {
   showToast: (type: 'success' | 'error' | 'warning' | 'info', message: string, description: string) => void;
+  setToast: React.Dispatch<React.SetStateAction<ToastData | null>>;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -23,7 +23,7 @@ export const useToast = () => {
 };
 
 interface ToastProviderProps {
- children: ReactNode; 
+  children: ReactNode;
 }
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
@@ -38,7 +38,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   };
 
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={{ showToast, setToast }}>
       {children}
       {toast && (
         <div className="absolute top-0 flex items-center justify-center w-full z-50">
