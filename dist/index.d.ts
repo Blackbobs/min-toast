@@ -5,18 +5,9 @@ interface ToastProviderProps {
 }
 declare const ToastProvider: React.FC<ToastProviderProps>;
 
-interface ToastProps {
-    type: "success" | "error" | "warning" | "info";
-    message: string;
-    description?: string;
-}
-declare const Toast: React.FC<ToastProps>;
+declare const successToast: (message: string, description: string) => void;
+declare const errorToast: (message: string, description: string) => void;
+declare const infoToast: (message: string, description: string) => void;
+declare const warningToast: (message: string, description: string) => void;
 
-declare const useToastNotifications: () => {
-    successToast: (message: string, description: string) => void;
-    errorToast: (message: string, description: string) => void;
-    infoToast: (message: string, description: string) => void;
-    warningToast: (message: string, description: string) => void;
-};
-
-export { Toast, ToastProvider, useToastNotifications };
+export { ToastProvider, errorToast, infoToast, successToast, warningToast };
