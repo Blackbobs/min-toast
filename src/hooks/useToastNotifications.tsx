@@ -1,31 +1,20 @@
 // src/hooks/useToastNotifications.ts
-import { useToast } from '../context/ToastContext';
+import toastManager from '../utils/ToastManager';
 
-const useToastNotifications = () => {
-  const { showToast } = useToast();
-
-  const successToast = (message: string, description: string) => {
-    showToast('success', message, description);
-  };
-
-  const errorToast = (message: string, description: string) => {
-    showToast('error', message, description);
-  };
-
-  const infoToast = (message: string, description: string) => {
-    showToast('info', message, description);
-  };
-
-  const warningToast = (message: string, description: string) => {
-    showToast('warning', message, description);
-  };
-
-  return {
-    successToast,
-    errorToast,
-    infoToast,
-    warningToast,
-  };
+const successToast = (message: string, description: string) => {
+  toastManager.showToast('success', message, description);
 };
 
-export default useToastNotifications;
+const errorToast = (message: string, description: string) => {
+  toastManager.showToast('error', message, description);
+};
+
+const infoToast = (message: string, description: string) => {
+  toastManager.showToast('info', message, description);
+};
+
+const warningToast = (message: string, description: string) => {
+  toastManager.showToast('warning', message, description);
+};
+
+export { successToast, errorToast, infoToast, warningToast };

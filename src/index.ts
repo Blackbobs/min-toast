@@ -1,6 +1,5 @@
 // src/index.ts
 import { ToastProvider } from './context/ToastContext';
-import { Toast } from './components/Toast';
-import useToastNotifications from './hooks/useToastNotifications';
+import {successToast, errorToast, infoToast, warningToast} from './hooks/useToastNotifications';
 
-export { ToastProvider, Toast, useToastNotifications };
+export { ToastProvider, successToast, errorToast, infoToast, warningToast };

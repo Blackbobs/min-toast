@@ -39,12 +39,12 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
 
   return (
     <ToastContext.Provider value={{ showToast, setToast }}>
-      {children}
       {toast && (
         <div className="absolute top-0 flex items-center justify-center w-full z-50">
           <Toast type={toast.type} message={toast.message} description={toast.description} />
         </div>
       )}
+      {children}
     </ToastContext.Provider>
   );
 };

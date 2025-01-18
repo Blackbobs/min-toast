@@ -1,30 +1,28 @@
-import React from "react";
-import { MdClose } from "react-icons/md";
+import React from 'react';
+import { MdClose } from 'react-icons/md';
 import {
   IoCheckmarkCircle,
   IoCloseCircleSharp,
   IoInformation,
-} from "react-icons/io5";
-import { IoIosWarning } from "react-icons/io";
-import { useToast } from "../context/ToastContext";
+} from 'react-icons/io5';
+import { IoIosWarning } from 'react-icons/io';
 
 interface ToastProps {
-  type: "success" | "error" | "warning" | "info";
+  type: 'success' | 'error' | 'warning' | 'info';
   message: string;
   description?: string;
 }
 
 export const Toast: React.FC<ToastProps> = ({ type, message, description }) => {
-  const { setToast } = useToast();
   const checkType = () => {
     switch (type) {
-      case "success":
+      case 'success':
         return <IoCheckmarkCircle size={25} color="#00ff00" />;
-      case "error":
+      case 'error':
         return <IoCloseCircleSharp size={25} color="#ff0000" />;
-      case "info":
+      case 'info':
         return <IoInformation size={25} color="#0000ff" />;
-      case "warning":
+      case 'warning':
         return <IoIosWarning size={25} color="#FFEB3B" />;
       default:
         return <IoCheckmarkCircle size={25} color="#00ff00" />;
@@ -44,7 +42,7 @@ export const Toast: React.FC<ToastProps> = ({ type, message, description }) => {
           </p>
         )}
       </div>
-      <MdClose size={25} color="#73737F" onClick={() => setToast(null)} role="button" aria-label="Close toast" />
+      <MdClose size={25} color="#73737F" role="button" aria-label="Close toast" />
     </div>
   );
 };
