@@ -30,7 +30,7 @@ export const Toast: React.FC<ToastProps> = ({ type, message, description }) => {
   };
 
   return (
-    <div className="w-[358px] md:w-[452px] h-[90px] rounded-lg bg-white p-5 my-3 mx-auto border border-[#E4E4E4] shadow shadow-[#0000001A] flex items-center gap-5">
+    <div className="w-[358px] md:w-[452px] h-[90px] rounded-lg bg-white p-5 my-3 mx-auto border border-[#E4E4E4] shadow shadow-[rgba(0,0,0,0.1)] flex items-center gap-5">
       {checkType()}
       <div className="flex-1 flex flex-col items-start gap-1">
         <h2 className="text-nowrap font-semibold text-gray-950 leading-5 text-[14px]">

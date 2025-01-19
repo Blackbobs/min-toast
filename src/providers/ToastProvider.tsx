@@ -16,15 +16,15 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
       if (currentToast && currentToast !== toast) {
         setToast(currentToast);
       }
-    }, 100); // Check every 100ms for a new toast
+    }, 100); 
 
     return () => clearInterval(interval);
   }, [toast]);
 
   return (
-    <div>
+    <>
       {toast && (
-        <div className="absolute top-0 flex items-center justify-center w-full z-50">
+        <div className="fixed top-0 left-1/2 -translate-x-1/2 flex items-center justify-center w-full z-[999999]">
           <Toast
             type={toast.type}
             message={toast.message}
@@ -33,6 +33,6 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
         </div>
       )}
       {children}
-    </div>
+    </>
   );
 };
