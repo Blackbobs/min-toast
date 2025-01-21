@@ -56,13 +56,14 @@ export const Toast: React.FC<ToastProps> = ({
           </p>
         )}
       </div>
+      <button onClick={onClose}>
       <MdClose
-      onClick={onClose}
         size={25}
         color="#73737F"
         role="button"
         aria-label="Close toast"
       />
+      </button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, { ReactNode, useCallback, useState, useEffect } from 'react';
 import toastManager from '../utils/ToastManager';
 import { Toast } from '../components/Toast';
 
@@ -18,14 +18,14 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
     toastManager.hideToast();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     toastManager.setOnToastChangedCallback(setToast);
     return () => {
       toastManager.setOnToastChangedCallback(() => {});
     };
   }, []);
 
-  return (
+  return ( 
     <div className="relative">
       {toast && (
         <div className="fixed top-0 left-1/2 -translate-x-1/2 flex items-center justify-center w-full z-[999999]">
