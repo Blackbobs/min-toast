@@ -1,6 +1,6 @@
 {
   "name": "min-toast",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "A customizable toast notification library for React.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,11 +10,13 @@
     "rollup": "rollup -c --bundleConfigAsCjs"
   },
   "keywords": [
-    "custom",
-    "notifications"
+    "Custom",
+    "Notifications"
   ],
   "author": "Blackbobs",
-  "github": "https://github.com/Blackbobs/min-toast",
+  "repository": {
+    "url": "https://github.com/Blackbobs/min-toast"
+},
   "license": "MIT",
   "dependencies": {
     "rollup": "^4.30.1"

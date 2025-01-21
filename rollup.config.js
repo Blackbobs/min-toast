@@ -29,7 +29,8 @@ export default [
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
         plugins: [require("tailwindcss"), require("autoprefixer")],
-        extract: true,
+        extract: false,
+        minimize: true,
       }),
       terser(),
     ],
