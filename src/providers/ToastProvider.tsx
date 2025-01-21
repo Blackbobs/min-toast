@@ -1,5 +1,4 @@
-// src/providers/ToastProvider.tsx
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useCallback, useState } from 'react';
 import toastManager from '../utils/ToastManager';
 import { Toast } from '../components/Toast';
 
@@ -8,23 +7,23 @@ interface ToastProviderProps {
 }
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
-  const [toast, setToast] = useState<{ type: "success" | "error" | "warning" | "info", message: string, description: string } | null>(null);
+  const [toast, setToast] = useState<{
+    type: 'success' | 'error' | 'warning' | 'info';
+    message: string;
+    description: string;
+  } | null>(null);
 
-  useEffect(() => {
-    // Set the callback to update the state when the toast is cleared
-    toastManager.setOnToastClearedCallback(() => {
-      setToast(null);
-    });
+  const handleClose = useCallback(() => {
+    setToast(null);
+    toastManager.hideToast();
+  }, []);
 
-    const interval = setInterval(() => {
-      const currentToast = toastManager.getToast();
-      if (currentToast && currentToast !== toast) {
-        setToast(currentToast);
-      }
-    }, 100); 
-
-    return () => clearInterval(interval);
-  }, [toast]);
+  React.useEffect(() => {
+    toastManager.setOnToastChangedCallback(setToast);
+    return () => {
+      toastManager.setOnToastChangedCallback(() => {});
+    };
+  }, []);
 
   return (
     <div className="relative">
@@ -34,6 +33,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
             type={toast.type}
             message={toast.message}
             description={toast.description}
+            onClose={handleClose}
           />
         </div>
       )}

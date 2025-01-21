@@ -1,6 +1,6 @@
 {
   "name": "min-toast",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "A customizable toast notification library for React.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
